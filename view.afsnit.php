@@ -62,7 +62,10 @@
     $database_m 	= $_REQUEST['database_m'];
     $database_y 	= $_REQUEST['database_y'];
     $database_date 	= $database_d.".".$database_m.".".$database_y;
-    $database="Database: ".$database_name." - Besøgt d. ".$database_date;
+    if (!emtpy($database_name))
+      $database="Database: ".$database_name." - Besøgt d. ".$database_date;
+    else
+      $database="";
 
     if($forfatter_redaktor=="forfatter"){
     	if($efternavn_afsnit!="") $efternavn_afsnit.=", ";

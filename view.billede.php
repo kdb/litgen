@@ -17,7 +17,10 @@
 	$database_m 	= $_REQUEST['database_m'];
 	$database_y 	= $_REQUEST['database_y'];
 	$database_date 	= $database_d.".".$database_m.".".$database_y;
-	$database="Database: ".$database_name." - Besøgt d. ".$database_date;
+    if (!empty($database_nome))
+	  $database="Database: ".$database_name." - Besøgt d. ".$database_date;
+    else
+      $$database="";
 
 	if(!empty($_REQUEST['udgivelse']))	$udgivelse 	= $_REQUEST['udgivelse'];	else $udgivelse="";
   	if(!empty($_REQUEST['side_fra']))	$side_fra 	= $_REQUEST['side_fra'];	else $side_fra="";
