@@ -1,26 +1,26 @@
 <?php
-	// Afsnit i bog    
-    
+	// Afsnit i bog
+
     if(!empty($_REQUEST['antal_forfattere'])){
         $udfyldte_forfattere=1;
         $antal_forfattere=$_REQUEST['antal_forfattere'];
         for($a=1;$a<$antal_forfattere;$a++){
-        	if(!empty($_REQUEST['fornavn'.$a]) && !empty($_REQUEST['efternavn'.$a]))                	
-            	$udfyldte_forfattere++;                                                                                    
+        	if(!empty($_REQUEST['fornavn'.$a]) && !empty($_REQUEST['efternavn'.$a]))
+            	$udfyldte_forfattere++;
         }
-    	$antal_forfattere=$udfyldte_forfattere;                
+    	$antal_forfattere=$udfyldte_forfattere;
     }
-    
+
     if(empty($antal_forfattere) OR $antal_forfattere=="null") $antal_forfattere=1;
-             
-    // 1 forfatter: Efternavn, Fornavn: Titel. #. udg. Forlag. Udgivelsesår.    
-	  // 2 forfattere: Efternavn, Fornavn og Fornavn Efternavn: Titel. #. udg. Forlag. Udgivelsesår.        
+
+    // 1 forfatter: Efternavn, Fornavn: Titel. #. udg. Forlag. Udgivelsesår.
+	  // 2 forfattere: Efternavn, Fornavn og Fornavn Efternavn: Titel. #. udg. Forlag. Udgivelsesår.
     // 3 eller flere forfattere: Efternavn, Fornavn m.fl.: Titel. #. udg. Forlag. Udgivelsesår.
-                        
+
     // 1 forfatter
     if($antal_forfattere==1)
     	$flere_forfattere = "";
-    
+
     // 2 forfattere
     if($antal_forfattere==2){
     	if(!empty($_REQUEST['fornavn1']) && !empty($_REQUEST['efternavn1']))
@@ -28,23 +28,23 @@
     	else
         	$flere_forfattere = "";
     }
-    
+
     // 3 eller flere forfattere
     if($antal_forfattere>=3)
     	$flere_forfattere = " m.fl.";
-    
+
     $forfatter_redaktor = $_REQUEST['forfatter_redaktor'];
-    $efternavn_afsnit 		= $_REQUEST['efternavn_afsnit'];    
+    $efternavn_afsnit 		= $_REQUEST['efternavn_afsnit'];
     $fornavn_afsnit 		= $_REQUEST['fornavn_afsnit'];
-    $efternavn 		= $_REQUEST['efternavn'];    
-    $fornavn 		= $_REQUEST['fornavn'];       
+    $efternavn 		= $_REQUEST['efternavn'];
+    $fornavn 		= $_REQUEST['fornavn'];
 	  $titel_bog 		= $_REQUEST['titel_bog'];
-    $titel_afsnit 	= $_REQUEST['titel_afsnit'];                
+    $titel_afsnit 	= $_REQUEST['titel_afsnit'];
     $udgave 		= $_REQUEST['udgave'];
     if($udgave==0)
     	$udgave		= "";
     $forlag 		= $_REQUEST['forlag'];
-    $udgivelse 		= $_REQUEST['udgivelse'];    
+    $udgivelse 		= $_REQUEST['udgivelse'];
     if(empty($_REQUEST['bindnummer']))
     	$bindnummer	= "";
     else
@@ -71,7 +71,7 @@
     if($forfatter_redaktor=="redaktor"){
        	if($efternavn_afsnit!="") $efternavn_afsnit.=", ";
     	if($fornavn_afsnit!="") $fornavn_afsnit.=". ";
-    }	    
+    }
 
     $titel_afsnit.=". ";
     //$efternavn.=". ";
@@ -83,16 +83,16 @@
     $sider=" side ".$side_fra."-".$side_til.". ";
     if($url!="") $url="Internetadresse: ".$url." ";
     if($url=="") $dato=""; else $dato="- Besøgt d. ".$dato.". ";
-    
+
     if($forfatter_redaktor=="forfatter"){
     	$efternavn.=", ";
     	$flere_forfattere.=": ";
-    	
+
         //af=afsnittets forfatter, bf=bogens forfatter
         //afEfternavn, afFornavn: TitelAfsnit. bfEfternavn, bfFornavn: I: TitelBog. 1. udg. Forlag, 2004. 1, (side 5-18). Internetadresse: Internetadresse Besøgt d. 01.08.2007 (Afsnit i bog)
 		$vText = $efternavn_afsnit.$fornavn_afsnit.$titel_afsnit.$efternavn.$fornavn.$flere_forfattere.$titel_bog.$udgave.$forlag.$udgivelse.$bindnummer.$sider.$url.$dato.$database;
     }
-    
+
     //En redaktør: Titel. Redigeret af: Fornavn Efternavn. Udgave. Forlag. Udgivelsesår
     //Flere redaktører: Bogens titel. Redigeret af fornavn efternavn, øvrige redaktørers fornavne og efternavne. Udgave. Forlag. Udgivelsesår
     if($forfatter_redaktor=="redaktor"){
@@ -100,7 +100,7 @@
         if($antal_forfattere<3)
         	$flere_forfattere.=". ";
         $vText = $efternavn_afsnit.$fornavn_afsnit.$titel_afsnit.$titel_bog.$sider."Redigeret af: ".$fornavn." ".$efternavn.$flere_forfattere.$bindnummer.$udgave.$forlag.$udgivelse.$url.$dato.$database;
-    }	
-    
+    }
+
     $vText = str_replace("..",".",$vText);
 ?>

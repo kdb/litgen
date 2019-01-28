@@ -1,12 +1,12 @@
 <?php
-	//Fastforms film: Filmens titel: Instruktør, manuskriptforfatter. År for tilblivelse.    
+	//Fastforms film: Filmens titel: Instruktør, manuskriptforfatter. År for tilblivelse.
     //Online film:    Filmens titel: Instruktør, manuskriptforfatter. URL. Dato for besøg.
-    
+
     //Da Vinci mysteriet. Instruktion: Ron Howard. Manuskript: Dan Brown. 2006. Internet: www.davincicode.dk. Besøgt 21.04.2006.
-                   
-	$titel 		= $_REQUEST['titel'];                  
-    $instruktor = $_REQUEST['instruktor'];        
-    $forfatter 	= $_REQUEST['forfatter'];    
+
+	$titel 		= $_REQUEST['titel'];
+    $instruktor = $_REQUEST['instruktor'];
+    $forfatter 	= $_REQUEST['forfatter'];
 	$udgivelse 	= $_REQUEST['udgivelse'];
     $url 		= $_REQUEST['url'];
     $dato="";
@@ -21,11 +21,11 @@
     $database="Database: ".$database_name." - Besøgt d. ".$database_date;
 
     if($titel!="") $titel .= ". ";
-    if($instruktor!="") $instruktor = "Instruktion: " . $instruktor . ". ";                        
-    if($forfatter!="") $forfatter = "Manuskript: " . $forfatter . ". ";                    
+    if($instruktor!="") $instruktor = "Instruktion: " . $instruktor . ". ";
+    if($forfatter!="") $forfatter = "Manuskript: " . $forfatter . ". ";
     if($udgivelse!="") $udgivelse.=". ";
     if($url!="") $url="Internetadresse: ".$url." ";
     if($url=="") $dato=""; else $dato="- Besøgt d. ".$dato.". ";
-    
+
     $vText = "<i>".$titel."</i>".$udgivelse.$instruktor.$forfatter.$url.$dato.$database;
 ?>

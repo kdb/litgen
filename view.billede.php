@@ -39,13 +39,13 @@
   	if($side_fra!="") $sider = "s. " . $side_fra;
     if($side_til!="") $sider.= "-" . $side_til;
     if($side_fra!="") $sider.=". ";
-  	
+
     if($_REQUEST['sted']=="bog")
 		$vText = $kunstner.$titel.$produktion.$bogtitel.$forlag.$udgivelse.$sider.$database;
 
 	if($_REQUEST['sted']=="museum")
     	$vText = $titel.$kunstner.$produktion.$museum.$adresse.$database;
-        
+
     if($_REQUEST['sted']=="internet")
     	$vText = $titel.$kunstner.$produktion.$url.$dato.$database;
 ?>

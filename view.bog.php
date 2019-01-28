@@ -1,25 +1,25 @@
-<?php      
-	
+<?php
+
 	if(!empty($_REQUEST['antal_forfattere'])){
         $udfyldte_forfattere=1;
         $antal_forfattere=$_REQUEST['antal_forfattere'];
         for($a=1;$a<$antal_forfattere;$a++){
-        	if(!empty($_REQUEST['fornavn'.$a]) && !empty($_REQUEST['efternavn'.$a]))                	
-            	$udfyldte_forfattere++;                                                                                    
+        	if(!empty($_REQUEST['fornavn'.$a]) && !empty($_REQUEST['efternavn'.$a]))
+            	$udfyldte_forfattere++;
         }
-    	$antal_forfattere=$udfyldte_forfattere;                
+    	$antal_forfattere=$udfyldte_forfattere;
     }
-    
+
     if(empty($antal_forfattere) OR $antal_forfattere=="null") $antal_forfattere=1;
-             
-    // 1 forfatter: Efternavn, Fornavn: Titel. #. udg. Forlag. Udgivelsesår.    
-	// 2 forfattere: Efternavn, Fornavn og Fornavn Efternavn: Titel. #. udg. Forlag. Udgivelsesår.        
+
+    // 1 forfatter: Efternavn, Fornavn: Titel. #. udg. Forlag. Udgivelsesår.
+	// 2 forfattere: Efternavn, Fornavn og Fornavn Efternavn: Titel. #. udg. Forlag. Udgivelsesår.
     // 3 eller flere forfattere: Efternavn, Fornavn m.fl.: Titel. #. udg. Forlag. Udgivelsesår.
-                        
+
     // 1 forfatter
     if($antal_forfattere==1)
     	$flere_forfattere = "";
-    
+
     // 2 forfattere
     if($antal_forfattere==2){
     	if(!empty($_REQUEST['fornavn1']) && !empty($_REQUEST['efternavn1']))
@@ -27,19 +27,19 @@
     	else
         	$flere_forfattere = "";
     }
-    
+
     // 3 eller flere forfattere
     if($antal_forfattere>=3)
     	$flere_forfattere = " m.fl.";
-  
-    $forfatter_redaktor = $_REQUEST['forfatter_redaktor'];    
-    $efternavn 			= $_REQUEST['efternavn'];    
-    $fornavn 			= $_REQUEST['fornavn'];       
+
+    $forfatter_redaktor = $_REQUEST['forfatter_redaktor'];
+    $efternavn 			= $_REQUEST['efternavn'];
+    $fornavn 			= $_REQUEST['fornavn'];
 	$titel	 			= $_REQUEST['titel'];
-    $serietitel	 		= $_REQUEST['serietitel'];                
+    $serietitel	 		= $_REQUEST['serietitel'];
     $udgave 			= $_REQUEST['udgave'];
     $bindnummer 		= $_REQUEST['bindnummer'];
-    $bindtitel   		= $_REQUEST['bindtitel'];    
+    $bindtitel   		= $_REQUEST['bindtitel'];
     $forlag 			= $_REQUEST['forlag'];
     $udgivelse 			= $_REQUEST['udgivelse'];
     $side_fra 		    = $_REQUEST['side_fra'];
@@ -58,8 +58,8 @@
 
     if($forfatter_redaktor=="forfatter"){
     	if(!empty($fornavn))
-            $efternavn.=", ";                                
-        $flere_forfattere.=": ";        
+            $efternavn.=", ";
+        $flere_forfattere.=": ";
         if(!empty($serietitel))
             $titel.=", ";
         else
@@ -81,8 +81,8 @@
         if(!empty($side_fra) AND !empty($side_til))
             $sider="Side ".$side_fra."-".$side_til.". ";
         if($url!="") $url="Internetadresse: ".$url." ";
-        if($url=="") $dato=""; else $dato="- Besøgt d. ".$dato;    	        
-        
+        if($url=="") $dato=""; else $dato="- Besøgt d. ".$dato;
+
         $vText = $efternavn.$fornavn.$flere_forfattere."<i>".$titel."</i>".$serietitel.$sider.$bindnummer.$bindtitel.$udgave.$forlag.$udgivelse.$url.$dato.$database;
     }
 
@@ -106,7 +106,7 @@
                 $bindnummer="Bind ".$bindnummer.". ";
         }
         if($bindtitel!="")
-            $bindtitel.=". ";        
+            $bindtitel.=". ";
         $forlag.=", ";
         $udgivelse.=". ";
         if(!empty($side_fra) AND !empty($side_til))
