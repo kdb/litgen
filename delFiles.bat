@@ -1,0 +1,1 @@
+c:\php\php-cgi.exe -f c:\inetpub\wwwroot\littgen\delFiles.php >NUL

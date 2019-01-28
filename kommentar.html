@@ -1,0 +1,27 @@
+<form id="form_kommentar">
+	<table border="0">
+	<tr><td>
+<div class="beskriv">Denne service er under udvikling og udgivet under <i>creativecommons</i> og <i>General Public License</i>. 
+Det betyder, at du har friheden til at forbedre programmet og udgive dine forbedringer til almenheden, 
+s?omverdenen kan drage nytte heraf. Har du kommentarer eller udviklings?sker h?er vi gerne fra dig</div></td></tr>
+		<tr>    
+			<td><img src="images/dut.gif" alt="" width="10" height="10" />&nbsp;<b>Dit navn</b><br><input size="30" type="text" name="afsender"></td>        
+		</tr>
+        <tr>
+        	<td><img src="images/dut.gif" alt="" width="10" height="10" />&nbsp;<b>Din E-mail</b><br><input size="30" type="text" name="email"></td>    		
+		</tr>    
+		<tr>    
+			<td><img src="images/dut.gif" alt="" width="10" height="10" />&nbsp;<b>Kommentar/Sp?gsm?</b><br><textarea name="kommentar" cols="50" rows="5"></textarea></td>			                            
+		</tr>     	                        
+		<tr>
+			<td>
+				<input type="submit" name="submitKnap" value="Send" onClick="return validateForm('kommentar')">
+                <?php
+                	if(!empty($_REQUEST['kommentar']))
+                    	print("<font color=red>Din kommentar er sendt</font>");
+                ?>
+			</td>
+		</tr>            
+	</table>
+	<input type="hidden" name="ressource" value="kommentar">
+</form>

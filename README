@@ -1,0 +1,16 @@
+
+Litteraturlistegeneratoren kan generere en litteraturliste.
+En litteraturliste er en samlet liste over ALT materiale, 
+man har brugt i sin opgave, fx bøger, artikler, musik, links m.m. 
+Litteraturlisten placeres til sidst i opgaven.(teksten er kun et eksempel)
+
+Systemet er udviklet i PHP5 og data gemmes i txt-filer på serveren. 
+
+Installation (Internet Information Services - IIS):
+ 
+1. Installér PHP5 på webserveren (http://www.php.net)
+2. Kopiér mappen littgen til \inetpub\wwwroot\
+3. Sørg for at index.php er et standarddokument på webserveren
+4. Internetgæstekontoen (IUSR_?) skal have skriverettigheder til mappen \inetpub\wwwroot\littgen
+
+
