@@ -62,7 +62,7 @@
     $database_m 	= $_REQUEST['database_m'];
     $database_y 	= $_REQUEST['database_y'];
     $database_date 	= $database_d.".".$database_m.".".$database_y;
-    if (!emtpy($database_name))
+    if (!empty($database_name))
       $database="Database: ".$database_name." - Besøgt d. ".$database_date;
     else
       $database="";
